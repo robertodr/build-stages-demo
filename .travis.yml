@@ -11,13 +11,17 @@ jobs:
     - stage: test
       script: bundle show
       rvm: 2.3
-      env:
-        - FOO='foo'
+      addons:
+        apt:
+          packages:
+          - clang-3.6      
     - stage: test
       script: bundle show
       rvm: 2.3
-      env:
-        - FOO='oof'
+      addons:
+        apt:
+          packages:
+          - gfortran
     - stage: test
       script: bundle show
       rvm: 2.3
