@@ -4,13 +4,15 @@ dist: trusty
 cache: bundler
 
 before: &before
-  - uname -a
-  - free -m
-  - df -h
-  - ulimit -a
+  before_script:
+    - uname -a
+    - free -m
+    - df -h
+    - ulimit -a
  
 show: &show
-  - bundle show
+  script:
+    - bundle show
 
 jobs:
   include:
