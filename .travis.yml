@@ -4,6 +4,7 @@ dist: trusty
 cache: bundler
 
 test: &test
+  stage: test
   before_script:
     - uname -a
     - free -m
