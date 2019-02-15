@@ -3,28 +3,35 @@ dist: trusty
 
 cache: bundler
 
+test: &test
+  before_script:
+    - uname -a
+    - free -m
+    - df -h
+    - ulimit -a 
+  script:
+    - bundle show
+
 jobs:
   include:
     - stage: prepare cache
       script: true
       rvm: 2.3
-    - stage: test
+    - <<: *test
       before_script:
         - export FOO='foo'
       script:
         - echo $FOO
-        - bundle show
       rvm: 2.3
       addons:
         apt:
           packages:
           - clang-3.6      
-    - stage: test
+    - <<: *test
       before_script:
         - export FOO='oof'
       script: 
         - echo $FOO
-        - bundle show
       rvm: 2.3
       addons:
         apt:
