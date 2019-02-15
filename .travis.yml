@@ -9,14 +9,22 @@ jobs:
       script: true
       rvm: 2.3
     - stage: test
-      script: bundle show
+      before_script:
+        - export FOO='foo'
+      script:
+        - echo $FOO
+        - bundle show
       rvm: 2.3
       addons:
         apt:
           packages:
           - clang-3.6      
     - stage: test
-      script: bundle show
+      before_script:
+        - export FOO='oof'
+      script: 
+        - echo $FOO
+        - bundle show
       rvm: 2.3
       addons:
         apt:
