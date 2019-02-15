@@ -4,15 +4,13 @@ dist: trusty
 cache: bundler
 
 before: &before
-  before_script:
-    - uname -a
-    - free -m
-    - df -h
-    - ulimit -a
+  - uname -a
+  - free -m
+  - df -h
+  - ulimit -a
  
 show: &show
-  script:
-    - bundle show
+  - bundle show
 
 jobs:
   include:
@@ -21,10 +19,10 @@ jobs:
       rvm: 2.3
     - stage: test
       before_script:
-        - <<: *before
+        - *before
         - export FOO='foo'
       script:
-        - <<: *show
+        - *show
         - echo $FOO
       rvm: 2.3
       addons:
@@ -33,10 +31,10 @@ jobs:
           - clang-3.6      
     - stage: test
       before_script:
-        - <<: *before
+        - *before
         - export FOO='oof'
       script:
-        - <<: *show
+        - *show
         - echo $FOO
       rvm: 2.3
       addons:
