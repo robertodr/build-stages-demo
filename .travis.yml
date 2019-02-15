@@ -11,9 +11,13 @@ jobs:
     - stage: test
       script: bundle show
       rvm: 2.3
+      env:
+        - FOO='foo'
     - stage: test
       script: bundle show
       rvm: 2.3
+      env:
+        - FOO='oof'
     - stage: test
       script: bundle show
       rvm: 2.3
